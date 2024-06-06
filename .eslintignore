@@ -1,0 +1,11 @@
+node_modules/
+coverage/
+scripts/
+public/
+build/
+dist/
+temp/
+tmp/
+*.min.js
+*.d.ts
+tsconfig.json
