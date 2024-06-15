@@ -27,6 +27,8 @@ type FormItemRHFProps<F extends FieldValues, N extends Path<F>> = FormItemRHFFor
   isDisabled?: boolean
   startContent?: ReactNode | ((value: any) => ReactNode)
   endContent?: ReactNode | ((value: any) => ReactNode)
+  orientation?: 'horizontal' | 'vertical'
+  order?: 'normal' | 'reverse'
 }
 
 export type { FormItemRHFFormProps, FormItemRHFProps }

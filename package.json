@@ -2,7 +2,7 @@
   "name": "@renderui/react-hook-form",
   "version": "0.0.1",
   "private": false,
-  "description": "React UI library with highly modular and ready-out-of-the-box components",
+  "description": "React-hook-form adapter for renderui component library",
   "license": "MIT",
   "author": "Lovro Žagar",
   "type": "module",
@@ -26,7 +26,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@renderui/core": "^0.9.0",
+    "@renderui/core": "^1.0.0",
     "@changesets/cli": "^2.26.0",
     "@types/react": "^18.2.63",
     "@types/react-dom": "^18.2.20",

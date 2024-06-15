@@ -4,6 +4,8 @@ import { Box, Label, cx, functionCallOrValue, getOptionalObject } from '@renderu
 import { FieldValues, Path, useController } from 'react-hook-form'
 import { FormItemRHFProps } from '../types/form-item-rhf'
 import { Message } from './message'
+import { getContainerClassName } from '../utils/get-container-classname'
+import { getLabelClassName } from '../utils/get-label-classname'
 
 const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRHFProps<F, N>) => {
   const {
@@ -25,6 +27,8 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
     startContent,
     endContent,
     children,
+    orientation = 'vertical',
+    order = 'normal',
   } = props
 
   const { control } = form
@@ -40,11 +44,9 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
 
   const { field, fieldState } = fieldControl
 
-  const isMessageOpen = Boolean(fieldState.error) || Boolean(error) || Boolean(description)
+  const isMessageOpen = Boolean(fieldState.error) || Boolean(error)
 
-  const messageType = Boolean(fieldState.error) ? 'error' : 'description'
-
-  const id = React.useId()
+  const reactId = React.useId()
 
   /* keep track of previous message so that we animate error smoothly out instead of it dissapearing */
   const previousMessageRef = React.useRef<string | undefined>(fieldState.error?.message)
@@ -61,22 +63,26 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
     ...restLabelProps
   } = getOptionalObject(labelProps)
 
+  const id = labelId ?? reactId
+
   return (
-    <Box className={cx('grid gap-0.5', containerClassName)} {...restContainerProps}>
+    <Box
+      className={getContainerClassName(orientation, order, containerClassName)}
+      {...restContainerProps}
+    >
       {functionCallOrValue(startContent, field.value)}
-      <Label htmlFor={labelId ?? id} className={cx('pl-0.5', labelClassName)} {...restLabelProps}>
+      <Label htmlFor={id} className={getLabelClassName(order, labelClassName)} {...restLabelProps}>
         {label}
       </Label>
       {children({ ...fieldControl, id })}
       <Message
-        collapsibleProps={collapsibleProps}
-        collapsibleContentProps={collapsibleContentProps}
         isOpen={isMessageOpen}
         description={description}
         error={error}
-        messageType={messageType}
         fieldStateError={fieldState.error?.message}
         previousFieldStateError={previousMessageRef.current}
+        collapsibleProps={collapsibleProps}
+        collapsibleContentProps={collapsibleContentProps}
       />
       {functionCallOrValue(endContent, field.value)}
     </Box>
