@@ -2396,10 +2396,10 @@
   resolved "https://registry.npmjs.org/@renderui/constants/-/constants-0.0.1.tgz#e73b34dc979bcf2446e3c8b4a9a6ebb986805066"
   integrity sha512-9Mw3vw95c2eDa0XAxehKMd+MJoc4kWh/aaAHjYHPBzBvUqCLsw2Xccib+9pawHEGR4odH7Vd9ar10gxiY2iC7g==
 
-"@renderui/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@renderui/core/-/core-1.0.0.tgz#51c4d5c4a5667d47cd20b9457a100a5487177551"
-  integrity sha512-2qSNTXGcBrZjINsXyMWe55hVgqLzkA3pBvIW+PkMq4ABeD+I91PYP6cXQtdF1gP+Oq34LdmOiPSAEw+MrgUcig==
+"@renderui/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@renderui/core/-/core-1.0.1.tgz#95ada065c36f20c7f8eb117f8272a693fccd8798"
+  integrity sha512-fo1m1prP1fvuTPMqRzRVoGaZrWVkVbLKumsy9Wg2YzAkTe5HTzWH6bDizxf0WnkSsR2PH1yvoH0FM7stQVusNQ==
   dependencies:
     "@radix-ui/react-accordion" "^1.1.2"
     "@radix-ui/react-collapsible" "^1.0.3"

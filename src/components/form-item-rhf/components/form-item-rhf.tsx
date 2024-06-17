@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Box, Label, cx, functionCallOrValue, getOptionalObject } from '@renderui/core'
+import { Box, Label, functionCallOrValue, getOptionalObject } from '@renderui/core'
 import { FieldValues, Path, useController } from 'react-hook-form'
 import { FormItemRHFProps } from '../types/form-item-rhf'
-import { Message } from './message'
 import { getContainerClassName } from '../utils/get-container-classname'
 import { getLabelClassName } from '../utils/get-label-classname'
+import { Message } from './message'
 
 const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRHFProps<F, N>) => {
   const {
@@ -22,8 +22,11 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
     description,
     containerProps,
     labelProps,
-    collapsibleProps,
-    collapsibleContentProps,
+    errorDescriptionContainerProps,
+    errorProps,
+    errorContentProps,
+    descriptionProps,
+    descriptionContentProps,
     startContent,
     endContent,
     children,
@@ -44,16 +47,7 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
 
   const { field, fieldState } = fieldControl
 
-  const isMessageOpen = Boolean(fieldState.error) || Boolean(error)
-
   const reactId = React.useId()
-
-  /* keep track of previous message so that we animate error smoothly out instead of it dissapearing */
-  const previousMessageRef = React.useRef<string | undefined>(fieldState.error?.message)
-
-  if (fieldState.error?.message && previousMessageRef.current !== fieldState.error?.message) {
-    previousMessageRef.current = fieldState.error?.message
-  }
 
   const { className: containerClassName, ...restContainerProps } = getOptionalObject(containerProps)
 
@@ -76,13 +70,14 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
       </Label>
       {children({ ...fieldControl, id })}
       <Message
-        isOpen={isMessageOpen}
-        description={description}
         error={error}
         fieldStateError={fieldState.error?.message}
-        previousFieldStateError={previousMessageRef.current}
-        collapsibleProps={collapsibleProps}
-        collapsibleContentProps={collapsibleContentProps}
+        description={description}
+        errorDescriptionContainerProps={errorDescriptionContainerProps}
+        errorProps={errorProps}
+        errorContentProps={errorContentProps}
+        descriptionProps={descriptionProps}
+        descriptionContentProps={descriptionContentProps}
       />
       {functionCallOrValue(endContent, field.value)}
     </Box>

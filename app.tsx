@@ -47,13 +47,11 @@ const App = () => {
           label='First name'
           description='Something'
           rules={{ required: 'First name is required' }}
-          error={state}
         />
         <NumberInputRHF
           form={form}
           name='age'
           label='Age'
-          description='test'
           precision={2}
           rules={{ required: 'Age is required' }}
           error={state}

@@ -1,4 +1,10 @@
-import { BoxProps, CollapsibleContentProps, CollapsibleProps, LabelProps } from '@renderui/core'
+import {
+  BoxProps,
+  CollapsibleContentProps,
+  CollapsibleProps,
+  LabelProps,
+  TextProps,
+} from '@renderui/core'
 import { ReactNode } from 'react'
 import {
   FieldValues,
@@ -16,10 +22,15 @@ type FormItemRHFFormProps<F extends FieldValues, N extends Path<F>> = Omit<
   label?: string
   error?: string
   description?: string
-  containerProps?: BoxProps
-  labelProps?: LabelProps
-  collapsibleProps?: CollapsibleProps
-  collapsibleContentProps?: CollapsibleContentProps
+  containerProps?: BoxProps | undefined
+  labelProps?: LabelProps | undefined
+  errorDescriptionContainerProps?: BoxProps | undefined
+  errorProps?: CollapsibleProps | undefined
+  errorContentProps?: CollapsibleContentProps | undefined
+  errorTextProps?: TextProps | undefined
+  descriptionProps?: CollapsibleProps | undefined
+  descriptionContentProps?: CollapsibleContentProps | undefined
+  descriptionTextProps?: TextProps | undefined
 }
 
 type FormItemRHFProps<F extends FieldValues, N extends Path<F>> = FormItemRHFFormProps<F, N> & {

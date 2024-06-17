@@ -1,58 +1,96 @@
-import {
-  Box,
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleContentProps,
-  CollapsibleProps,
-  cx,
-  getOptionalObject,
-} from '@renderui/core'
-import React from 'react'
+import { FormItemRHFFormProps } from '@/components/form-item-rhf'
+import { Box, Collapsible, CollapsibleContent, Text, cx, getOptionalObject } from '@renderui/core'
+import React, { useEffect, useState } from 'react'
 
 type MessageProps = {
-  isOpen: boolean
-  collapsibleProps?: CollapsibleProps
-  collapsibleContentProps?: CollapsibleContentProps
   error: string | undefined
   fieldStateError: string | undefined
-  previousFieldStateError: string | undefined
   description: string | undefined
-}
+} & Pick<
+  FormItemRHFFormProps<any, any>,
+  | 'errorDescriptionContainerProps'
+  | 'errorProps'
+  | 'errorContentProps'
+  | 'errorTextProps'
+  | 'descriptionProps'
+  | 'descriptionContentProps'
+  | 'descriptionTextProps'
+>
 
 const Message = (props: MessageProps) => {
   const {
-    isOpen,
-    collapsibleProps,
-    collapsibleContentProps,
     error,
     fieldStateError,
-    previousFieldStateError,
     description,
+    errorDescriptionContainerProps,
+    errorProps,
+    errorContentProps,
+    errorTextProps,
+    descriptionProps,
+    descriptionContentProps,
+    descriptionTextProps,
   } = props
 
-  const { className: collapsibleContentClassName } = getOptionalObject(collapsibleContentProps)
+  const { className: errorDescriptionContainerClassName, ...restErrorDescriptionContainerProps } =
+    getOptionalObject(errorDescriptionContainerProps)
+
+  const { className: errorContentClassName, ...restErrorContentProps } =
+    getOptionalObject(errorContentProps)
+
+  const { className: errorTextClassName, ...restErrorTextProps } = getOptionalObject(errorTextProps)
+
+  const { className: descriptionContentClassName, ...restDescriptionContentProps } =
+    getOptionalObject(descriptionContentProps)
+
+  const { className: descriptionTextClassName, ...restDescriptionTextProps } =
+    getOptionalObject(descriptionTextProps)
+
+  const displayError = error || fieldStateError
+
+  const [previousError, setPreviousError] = useState(displayError)
+
+  useEffect(() => {
+    if (!displayError) return
+
+    setPreviousError(displayError)
+  }, [displayError])
 
   return (
-    <Box className={'relative min-h-8 mt-1 bottom-0 order-3 col-span-full'}>
-      <Collapsible open={isOpen} {...collapsibleProps}>
+    <Box
+      className={cx(
+        'min-h-7 mt-1 bottom-0 order-3 col-span-full overflow-hidden',
+        errorDescriptionContainerClassName,
+      )}
+      {...restErrorDescriptionContainerProps}
+    >
+      <Collapsible open={Boolean(displayError)} {...errorProps}>
         <CollapsibleContent
-          className={cx(
-            'absolute inset-0 size-full z-[1] pl-0.5 text-sm duration-0',
-            isOpen ? 'text-destructive' : 'text-transparent',
-            collapsibleContentClassName,
-          )}
+          className={cx('pl-0.5', errorContentClassName)}
+          {...restErrorContentProps}
         >
-          {error || fieldStateError || previousFieldStateError}
+          <Text
+            className={cx('block min-h-4 text-sm text-destructive', errorTextClassName)}
+            {...restErrorTextProps}
+          >
+            {previousError}
+          </Text>
         </CollapsibleContent>
       </Collapsible>
-      <Box
-        className={cx(
-          'absolute inset-0 size-full z-0 text-sm pl-0.5 transition-[opacity]',
-          isOpen ? 'opacity-0 duration-0' : 'duration-150 opacity-100',
-        )}
-      >
-        {description}
-      </Box>
+      {description ? (
+        <Collapsible open={!displayError} {...descriptionProps}>
+          <CollapsibleContent
+            className={cx('pl-0.5 ', descriptionContentClassName)}
+            {...restDescriptionContentProps}
+          >
+            <Text
+              className={cx('block text-sm text-mode-contrast/60', descriptionTextClassName)}
+              {...restDescriptionTextProps}
+            >
+              {description}
+            </Text>
+          </CollapsibleContent>
+        </Collapsible>
+      ) : null}
     </Box>
   )
 }

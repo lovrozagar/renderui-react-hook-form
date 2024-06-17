@@ -8,5 +8,7 @@ type FormRHFProps<T extends FieldValues> = Omit<
   form: UseFormReturn<T>
   onSubmit: SubmitHandler<T>
   onInvalidSubmit?: SubmitErrorHandler<T>
+  /* useful to guard against holding enter on submit button */
+  blurActiveElementOnSubmit?: boolean
 }
 export type { FormRHFProps }
