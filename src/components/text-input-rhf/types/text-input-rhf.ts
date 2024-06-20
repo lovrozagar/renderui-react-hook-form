@@ -8,6 +8,8 @@ type TextInputRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
   React.ComponentPropsWithoutRef<typeof TextInput>,
   'form'
 > &
-  Omit<FormItemRHFProps<F, N>, 'children'>
+  Omit<FormItemRHFProps<F, N>, 'children'> & {
+    trim?: boolean | undefined
+  }
 
 export type { TextInputRHFProps }

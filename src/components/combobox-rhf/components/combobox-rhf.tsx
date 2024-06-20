@@ -20,8 +20,7 @@ const ComboboxRHF = <F extends FieldValues, N extends Path<F>>(props: ComboboxRH
 
   const { label, ...restFormItemProps } = formItemProps
 
-  const { items, triggerProps, contentProps, children, onValueChange, ...restProps } =
-    componentProps
+  const { items, triggerProps, contentProps, onValueChange, ...restProps } = componentProps
 
   const {
     id: idProp,

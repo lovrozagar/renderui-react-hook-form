@@ -1,26 +1,21 @@
 import React from 'react'
 
-import { FormItemRHF, FormItemRHFProps } from '@/components/form-item-rhf'
+import { FormItemRHF } from '@/components/form-item-rhf'
+import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 import { getFormItemProps } from '@/utils/split-form-item-props'
 import { Switch, chain, cx } from '@renderui/core'
 import { FieldValues, Path } from 'react-hook-form'
 import { SwitchRHFProps } from '../types/switch-rhf'
-import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 
 const SwitchRHF = <F extends FieldValues, N extends Path<F>>(props: SwitchRHFProps<F, N>) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
 
-  const {
-    className,
-    onBlur,
-    onCheckedChange,
-    orientation = 'horizontal',
-    order = 'reverse',
-    ...restProps
-  } = componentProps
+  const { orientation = 'horizontal', order = 'reverse', ...restFormItemProps } = formItemProps
+
+  const { className, onBlur, onCheckedChange, ...restProps } = componentProps
 
   return (
-    <FormItemRHF orientation={orientation} order={order} {...formItemProps}>
+    <FormItemRHF orientation={orientation} order={order} {...restFormItemProps}>
       {({ field, fieldState, id }) => (
         <Switch
           id={id}

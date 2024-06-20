@@ -10,7 +10,7 @@ import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 const SegmentRHF = <F extends FieldValues, N extends Path<F>>(props: SegmentRHFProps<F, N>) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
 
-  const { children, listProps, items, onValueChange, ...restProps } = componentProps
+  const { listProps, items, onValueChange, ...restProps } = componentProps
 
   return (
     <FormItemRHF {...formItemProps}>

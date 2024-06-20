@@ -20,8 +20,7 @@ const SelectRHF = <F extends FieldValues, N extends Path<F>>(props: SelectRHFPro
 
   const { label, ...restFormItemProps } = formItemProps
 
-  const { items, triggerProps, contentProps, children, onValueChange, ...restProps } =
-    componentProps
+  const { items, triggerProps, contentProps, onValueChange, ...restProps } = componentProps
 
   const { className, id: idProp, onBlur, ...restTriggerProps } = getOptionalObject(triggerProps)
 
