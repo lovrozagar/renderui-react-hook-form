@@ -1029,11 +1029,6 @@
     "@radix-ui/react-primitive" "1.0.3"
     "@radix-ui/react-use-callback-ref" "1.0.1"
 
-"@radix-ui/react-icons@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@radix-ui/react-icons/-/react-icons-1.3.0.tgz#c61af8f323d87682c5ca76b856d60c2312dbcb69"
-  integrity sha512-jQxj/0LKgp+j9BiTXz3O3sgs26RNet2iLWmsPyRz2SIcR4q/4SbazXfnYwbAr+vLYKSfc7qxzyGQA1HLlYiuNw==
-
 "@radix-ui/react-id@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.0.0.tgz#8d43224910741870a45a8c9d092f25887bb6d11e"
@@ -2396,15 +2391,14 @@
   resolved "https://registry.npmjs.org/@renderui/constants/-/constants-0.0.1.tgz#e73b34dc979bcf2446e3c8b4a9a6ebb986805066"
   integrity sha512-9Mw3vw95c2eDa0XAxehKMd+MJoc4kWh/aaAHjYHPBzBvUqCLsw2Xccib+9pawHEGR4odH7Vd9ar10gxiY2iC7g==
 
-"@renderui/core@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@renderui/core/-/core-1.0.8.tgz#2d9358f132daf20d2387a4adf41e6a39cf58913e"
-  integrity sha512-Ci7WZ9fDOrQQcZHGEuwBWw6PufkB1tyuMEkCGybl93yWKvorfrVq/iXDvajiVd062yEP4gDskzSawiIYlTiovw==
+"@renderui/core@^1.1.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@renderui/core/-/core-1.2.2.tgz#11f1b9fc412cd90974e99331d7639704cc3fd2d5"
+  integrity sha512-ZZGNbYRS/j57OyoiEHQF6xnYLCORShiMR8uav9SEovQWO+nEWfZcUl5ita8DtVSZhxcF0jzrZPhW6Xx0VSf0tQ==
   dependencies:
     "@radix-ui/react-accordion" "^1.1.2"
     "@radix-ui/react-collapsible" "^1.0.3"
     "@radix-ui/react-dialog" "^1.0.5"
-    "@radix-ui/react-icons" "^1.3.0"
     "@radix-ui/react-navigation-menu" "^1.1.4"
     "@radix-ui/react-popover" "^1.0.7"
     "@radix-ui/react-portal" "^1.0.4"
@@ -2415,7 +2409,6 @@
     "@radix-ui/react-toggle" "^1.0.3"
     "@radix-ui/react-toggle-group" "^1.0.4"
     "@radix-ui/react-tooltip" "^1.0.7"
-    "@renderui/constants" "^0.0.1"
     "@renderui/hooks" "^0.1.7"
     "@renderui/types" "^0.0.2"
     "@renderui/utils" "^0.1.8"

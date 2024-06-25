@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { FormItemRHF } from '@/components/form-item-rhf'
+import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 import { getFormItemProps } from '@/utils/split-form-item-props'
 import {
   Combobox,
@@ -13,14 +14,12 @@ import {
 } from '@renderui/core'
 import { FieldValues, Path } from 'react-hook-form'
 import { ComboboxRHFProps } from '../types/combobox-rhf'
-import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 
 const ComboboxRHF = <F extends FieldValues, N extends Path<F>>(props: ComboboxRHFProps<F, N>) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
 
-  const { label, ...restFormItemProps } = formItemProps
-
-  const { items, triggerProps, contentProps, onValueChange, ...restProps } = componentProps
+  const { placeholder, items, triggerProps, contentProps, onValueChange, ...restProps } =
+    componentProps
 
   const {
     id: idProp,
@@ -30,7 +29,7 @@ const ComboboxRHF = <F extends FieldValues, N extends Path<F>>(props: ComboboxRH
   } = getOptionalObject(triggerProps)
 
   return (
-    <FormItemRHF {...restFormItemProps}>
+    <FormItemRHF {...formItemProps}>
       {({ field, fieldState, id }) => (
         <Combobox
           name={field.name}
@@ -42,6 +41,7 @@ const ComboboxRHF = <F extends FieldValues, N extends Path<F>>(props: ComboboxRH
           <ComboboxTrigger
             id={idProp ?? id}
             ref={field.ref}
+            placeholder={placeholder}
             onBlur={chain(field.onBlur, onBlur)}
             className={cx(RING_FOCUS_VISIBLE_CLASSNAME, triggerClassName)}
             {...restTriggerProps}

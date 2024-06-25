@@ -13,6 +13,7 @@ type ComboboxRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
   'form'
 > &
   Omit<FormItemRHFProps<F, N>, 'children'> & {
+    placeholder?: string
     triggerProps?: ComboboxTriggerProps
     contentProps?: ComboboxContentProps
     items: (Omit<ComboboxItemProps, 'children'> & { label?: ReactNode })[]

@@ -11,7 +11,7 @@ const NumberInputRHF = <F extends FieldValues, N extends Path<F>>(
   props: NumberInputRHFProps<F, N>,
 ) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
-  const {id: idProp, onBlur, onValueChange, precision, ...restProps } = componentProps
+  const { id: idProp, onBlur, onValueChange, precision, ...restProps } = componentProps
 
   return (
     <FormItemRHF {...formItemProps}>
