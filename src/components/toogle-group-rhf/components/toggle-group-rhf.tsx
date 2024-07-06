@@ -14,7 +14,7 @@ const ToggleGroupRHF = <F extends FieldValues, N extends Path<F>>(
 
   const { children, ...restFormItemProps } = formItemProps
 
-  const { items, onBlur, onValueChange, ...restProps } = componentProps
+  const { type, items, onBlur, onValueChange, ...restProps } = componentProps
 
   return (
     <FormItemRHF {...restFormItemProps}>
@@ -22,7 +22,9 @@ const ToggleGroupRHF = <F extends FieldValues, N extends Path<F>>(
         <>
           <ToggleGroup
             id={id}
-            value={Array.isArray(field.value) ? field.value : [field.value]}
+            /* cast type and value loosly to support single and multiple type */
+            type={type as any}
+            value={(Array.isArray(field.value) ? field.value : [field.value]) as any}
             onBlur={chain(field.onBlur, onBlur)}
             onValueChange={chain(field.onChange, onValueChange)}
             {...restProps}
