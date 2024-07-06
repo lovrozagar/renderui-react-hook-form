@@ -11,21 +11,26 @@ const NumberInputRHF = <F extends FieldValues, N extends Path<F>>(
   props: NumberInputRHFProps<F, N>,
 ) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
+
+  const { children, ...restFormItemProps } = formItemProps
   const { id: idProp, onBlur, onValueChange, precision, ...restProps } = componentProps
 
   return (
-    <FormItemRHF {...formItemProps}>
+    <FormItemRHF {...restFormItemProps}>
       {({ field, fieldState, id }) => (
-        <NumberInput
-          id={idProp ?? id}
-          ref={field.ref}
-          name={field.name}
-          value={field.value}
-          isInvalid={Boolean(fieldState.error)}
-          onBlur={chain(field.onBlur, getHandleBlur(field, precision, onValueChange), onBlur)}
-          onValueChange={chain(field.onChange, onValueChange)}
-          {...restProps}
-        />
+        <>
+          <NumberInput
+            id={idProp ?? id}
+            ref={field.ref}
+            name={field.name}
+            value={field.value}
+            isInvalid={Boolean(fieldState.error)}
+            onBlur={chain(field.onBlur, getHandleBlur(field, precision, onValueChange), onBlur)}
+            onValueChange={chain(field.onChange, onValueChange)}
+            {...restProps}
+          />
+          {children}
+        </>
       )}
     </FormItemRHF>
   )

@@ -10,14 +10,19 @@ import { CheckboxRHFProps } from '../types/checkbox-rhf'
 const CheckboxRHF = <F extends FieldValues, N extends Path<F>>(props: CheckboxRHFProps<F, N>) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
 
-  const { orientation = 'horizontal', order = 'reverse', ...restFormItemProps } = formItemProps
+  const {
+    children,
+    orientation = 'horizontal',
+    order = 'reverse',
+    ...restFormItemProps
+  } = formItemProps
 
   const { className, onBlur, onCheckedChange, ...restProps } = componentProps
 
   return (
     <FormItemRHF orientation={orientation} order={order} {...restFormItemProps}>
-      {({ field, fieldState, id }) => {
-        return (
+      {({ field, fieldState, id }) => (
+        <>
           <Checkbox
             id={id}
             ref={field.ref}
@@ -29,8 +34,9 @@ const CheckboxRHF = <F extends FieldValues, N extends Path<F>>(props: CheckboxRH
             onCheckedChange={chain(field.onChange, onCheckedChange)}
             {...restProps}
           />
-        )
-      }}
+          {children}
+        </>
+      )}
     </FormItemRHF>
   )
 }
