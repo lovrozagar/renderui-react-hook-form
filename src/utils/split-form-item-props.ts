@@ -23,13 +23,17 @@ function getFormItemProps<
     errorDescriptionContainerProps,
     errorProps,
     errorContentProps,
+    errorTextProps,
     descriptionProps,
     descriptionContentProps,
+    descriptionTextProps,
     startContent,
     endContent,
     children,
     orientation,
     order,
+    hasLabel,
+    hasMessage,
     ...componentProps
   } = props
 

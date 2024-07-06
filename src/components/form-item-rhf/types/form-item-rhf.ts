@@ -31,6 +31,8 @@ type FormItemRHFFormProps<F extends FieldValues, N extends Path<F>> = Omit<
   descriptionProps?: CollapsibleProps | undefined
   descriptionContentProps?: CollapsibleContentProps | undefined
   descriptionTextProps?: TextProps | undefined
+  hasLabel?: boolean
+  hasMessage?: boolean
 }
 
 type FormItemRHFProps<F extends FieldValues, N extends Path<F>> = FormItemRHFFormProps<F, N> & {

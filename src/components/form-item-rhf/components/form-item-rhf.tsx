@@ -25,11 +25,15 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
     errorDescriptionContainerProps,
     errorProps,
     errorContentProps,
+    errorTextProps,
     descriptionProps,
     descriptionContentProps,
+    descriptionTextProps,
     startContent,
     endContent,
     children,
+    hasLabel = true,
+    hasMessage = true,
     orientation = 'vertical',
     order = 'normal',
   } = props
@@ -65,20 +69,30 @@ const FormItemRHF = <F extends FieldValues, N extends Path<F>>(props: FormItemRH
       {...restContainerProps}
     >
       {functionCallOrValue(startContent, field.value)}
-      <Label htmlFor={id} className={getLabelClassName(order, labelClassName)} {...restLabelProps}>
-        {label}
-      </Label>
+      {hasLabel ? (
+        <Label
+          htmlFor={id}
+          className={getLabelClassName(order, labelClassName)}
+          {...restLabelProps}
+        >
+          {label}
+        </Label>
+      ) : null}
       {children({ ...fieldControl, id })}
-      <Message
-        error={error}
-        fieldStateError={fieldState.error?.message}
-        description={description}
-        errorDescriptionContainerProps={errorDescriptionContainerProps}
-        errorProps={errorProps}
-        errorContentProps={errorContentProps}
-        descriptionProps={descriptionProps}
-        descriptionContentProps={descriptionContentProps}
-      />
+      {hasMessage ? (
+        <Message
+          error={error}
+          fieldStateError={fieldState.error?.message}
+          description={description}
+          errorDescriptionContainerProps={errorDescriptionContainerProps}
+          errorProps={errorProps}
+          errorContentProps={errorContentProps}
+          errorTextProps={errorTextProps}
+          descriptionProps={descriptionProps}
+          descriptionContentProps={descriptionContentProps}
+          descriptionTextProps={descriptionTextProps}
+        />
+      ) : null}
       {functionCallOrValue(endContent, field.value)}
     </Box>
   )
