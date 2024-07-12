@@ -61,7 +61,10 @@ function getFormItemProps<
       orientation,
       order,
     },
-    componentProps,
+    componentProps: {
+      ...componentProps,
+      isDisabled,
+    },
   }
 }
 
