@@ -1,6 +1,6 @@
 {
   "name": "@renderui/react-hook-form",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "description": "React-hook-form adapter for renderui component library",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@renderui/core": "^1.3.6",
+    "@renderui/core": "^1.4.9",
     "@changesets/cli": "^2.26.0",
     "@types/react": "^18.2.63",
     "@types/react-dom": "^18.2.20",

@@ -2,12 +2,12 @@ import React from 'react'
 
 import { FormItemRHF } from '@/components/form-item-rhf'
 import { getFormItemProps } from '@/utils/split-form-item-props'
-import { TextInput, chain } from '@renderui/core'
+import { TextArea, chain } from '@renderui/core'
 import { FieldValues, Path } from 'react-hook-form'
-import { TextInputRHFProps } from '../types/text-input-rhf'
-import { getTextTrim } from '../../../utils/get-text-trim'
+import { getTextTrim } from '@/utils/get-text-trim'
+import { TextAreaRHFProps } from '../types/text-area-rhf'
 
-const TextInputRHF = <F extends FieldValues, N extends Path<F>>(props: TextInputRHFProps<F, N>) => {
+const TextAreaRHF = <F extends FieldValues, N extends Path<F>>(props: TextAreaRHFProps<F, N>) => {
   const { formItemProps, componentProps } = getFormItemProps(props)
 
   const { form, children, ...restFormItemProps } = formItemProps
@@ -19,7 +19,7 @@ const TextInputRHF = <F extends FieldValues, N extends Path<F>>(props: TextInput
     <FormItemRHF form={form} {...restFormItemProps}>
       {({ field, fieldState, id }) => (
         <>
-          <TextInput
+          <TextArea
             id={id}
             ref={field.ref}
             name={field.name}
@@ -40,4 +40,4 @@ const TextInputRHF = <F extends FieldValues, N extends Path<F>>(props: TextInput
   )
 }
 
-export { TextInputRHF }
+export { TextAreaRHF }
