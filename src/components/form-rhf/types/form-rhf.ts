@@ -1,14 +1,15 @@
-import { Form } from '@renderui/core'
-import { FieldValues, SubmitErrorHandler, SubmitHandler, UseFormReturn } from 'react-hook-form'
+import type { Form } from '@renderui/core'
+import type { FieldValues, SubmitErrorHandler, SubmitHandler, UseFormReturn } from 'react-hook-form'
 
 type FormRHFProps<T extends FieldValues> = Omit<
-  React.ComponentPropsWithoutRef<typeof Form>,
-  'onSubmit'
+	React.ComponentPropsWithRef<typeof Form>,
+	'onSubmit'
 > & {
-  form: UseFormReturn<T>
-  onSubmit: SubmitHandler<T>
-  onInvalidSubmit?: SubmitErrorHandler<T>
-  /* useful to guard against holding enter on submit button */
-  blurActiveElementOnSubmit?: boolean
+	form: UseFormReturn<T>
+	onSubmit: SubmitHandler<T>
+	onInvalidSubmit?: SubmitErrorHandler<T>
+	/* useful to guard against holding enter on submit button */
+	hasSubmitRateLimit?: boolean
+	submitRateLimit?: number
 }
 export type { FormRHFProps }

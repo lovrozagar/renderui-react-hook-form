@@ -1,22 +1,22 @@
-import { FormItemRHFProps } from '@/components'
-import {
-  ComboboxContentProps,
-  ComboboxItemProps,
-  ComboboxTriggerProps,
-  Select,
+import type { FormItemRHFProps } from '@/components/form-item-rhf/types/form-item-rhf'
+import type {
+	ComboboxContentProps,
+	ComboboxItemProps,
+	ComboboxTriggerProps,
+	Select,
 } from '@renderui/core'
-import { ReactNode } from 'react'
-import { FieldValues, Path } from 'react-hook-form'
+import type { ReactNode } from 'react'
+import type { FieldValues, Path } from 'react-hook-form'
 
 type SelectRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
-  React.ComponentPropsWithoutRef<typeof Select>,
-  'form'
+	React.ComponentPropsWithRef<typeof Select>,
+	'form'
 > &
-  Omit<FormItemRHFProps<F, N>, 'children'> & {
-    placeholder?: string
-    triggerProps?: ComboboxTriggerProps
-    contentProps?: ComboboxContentProps
-    items: (Omit<ComboboxItemProps, 'children'> & { label?: ReactNode })[]
-  }
+	Omit<FormItemRHFProps<F, N>, 'children'> & {
+		placeholder?: string
+		triggerProps?: ComboboxTriggerProps
+		contentProps?: ComboboxContentProps
+		items: (Omit<ComboboxItemProps, 'children'> & { label?: ReactNode })[]
+	}
 
 export type { SelectRHFProps }

@@ -1,58 +1,70 @@
 {
-  "name": "@renderui/react-hook-form",
-  "version": "0.1.9",
-  "private": false,
-  "description": "React-hook-form adapter for renderui component library",
-  "license": "MIT",
-  "author": "Lovro Žagar",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "bunchee -m",
-    "dev": "vite dev"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@renderui/core": "^1.4.9",
-    "@changesets/cli": "^2.26.0",
-    "@types/react": "^18.2.63",
-    "@types/react-dom": "^18.2.20",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
-    "@vitejs/plugin-react": "4.2.1",
-    "vite": "^5.1.4",
-    "eslint-plugin-no-relative-import-paths": "^1.5.3",
-    "bunchee": "^5.1.5",
-    "eslint": "^8.57.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-hook-form": "^7.51.5",
-    "typescript": "^5.3.0",
-    "postcss": "^8.4.35",
-    "autoprefixer": "^10.4.17",
-    "tailwindcss": "^3.4.1",
-    "framer-motion": "^11.0.5"
-  },
-  "peerDependencies": {
-    "react": "^18.0",
-    "react-dom": "^18.0.0",
-    "@renderui/core": "^0.8.7",
-    "react-hook-form": "^7.51.5"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@renderui/react-hook-form",
+	"version": "0.2.2",
+	"private": false,
+	"sideEffects": false,
+	"description": "React-hook-form adapter for renderui component library",
+	"license": "MIT",
+	"author": "Lovro Žagar",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			}
+		}
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": ["dist"],
+	"scripts": {
+		"build": "bunchee -m",
+		"dev": "vite dev",
+		"commitlint:init": "chmod +x .lefthook/commit-msg/commitlint.sh",
+		"lefthook:init": "npx lefthook install",
+		"type:check": "tsc --noEmit",
+		"type:coverage": "typescript-coverage-report",
+		"lint": "npx @biomejs/biome lint ./src",
+		"lint:check": "npx @biomejs/biome check ./src",
+		"lint:format": "npx @biomejs/biome format --write ./src",
+		"lint:fix": "npx @biomejs/biome lint --write ./src"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
+		"@biomejs/monorepo": "biomejs/biome",
+		"@renderui/core": "^1.7.2",
+		"@changesets/cli": "^2.26.0",
+		"@types/react": "^18.2.63",
+		"@types/react-dom": "^18.2.20",
+		"@vitejs/plugin-react": "4.2.1",
+		"@commitlint/cli": "^18.6.1",
+		"@commitlint/config-conventional": "^18.6.2",
+		"vite": "^5.1.4",
+		"bunchee": "^5.1.5",
+		"lefthook": "^1.7.12",
+		"typescript": "^5.3.0",
+		"postcss": "^8.4.35",
+		"autoprefixer": "^10.4.17",
+		"tailwindcss": "^3.4.1",
+		"framer-motion": "^11.0.5",
+		"react": "^19.0.0-rc.0",
+		"react-dom": "^19.0.0-rc.0",
+		"types-react": "^19.0.0-rc.1",
+		"types-react-dom": "^19.0.0-rc.1",
+		"react-hook-form": "^7.51.5"
+	},
+	"peerDependencies": {
+		"@renderui/core": "^0.8.7",
+		"react": "^19.0.0-rc.0",
+		"react-dom": "^19.0.0-rc.0",
+		"types-react": "^19.0.0-rc.1",
+		"types-react-dom": "^19.0.0-rc.1",
+		"react-hook-form": "^7.51.5"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

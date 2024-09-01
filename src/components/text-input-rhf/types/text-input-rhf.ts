@@ -1,15 +1,15 @@
-import React from 'react'
+import type React from 'react'
 
-import { FormItemRHFProps } from '@/components/form-item-rhf'
-import { TextInput } from '@renderui/core'
-import { FieldValues, Path } from 'react-hook-form'
+import type { FormItemRHFProps } from '@/components/form-item-rhf/types/form-item-rhf'
+import type { TextInput } from '@renderui/core'
+import type { FieldValues, Path } from 'react-hook-form'
 
 type TextInputRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
-  React.ComponentPropsWithoutRef<typeof TextInput>,
-  'form'
+	React.ComponentPropsWithRef<typeof TextInput>,
+	'form'
 > &
-  Omit<FormItemRHFProps<F, N>, 'children'> & {
-    trim?: boolean | undefined
-  }
+	Omit<FormItemRHFProps<F, N>, 'children'> & {
+		trim?: boolean | undefined
+	}
 
 export type { TextInputRHFProps }

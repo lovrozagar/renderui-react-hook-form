@@ -1,14 +1,14 @@
-import { FormItemRHFProps } from '@/components'
-import { ToggleGroup, ToggleGroupItemProps } from '@renderui/core'
-import { ReactNode } from 'react'
-import { FieldValues, Path } from 'react-hook-form'
+import type { FormItemRHFProps } from '@/components/form-item-rhf/types/form-item-rhf'
+import type { ToggleGroup, ToggleGroupItemProps } from '@renderui/core'
+import type { ReactNode } from 'react'
+import type { FieldValues, Path } from 'react-hook-form'
 
 type ToggleGroupRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
-  React.ComponentPropsWithoutRef<typeof ToggleGroup>,
-  'form'
+	React.ComponentPropsWithRef<typeof ToggleGroup>,
+	'form'
 > &
-  Omit<FormItemRHFProps<F, N>, 'children'> & {
-    items: (ToggleGroupItemProps & { label?: ReactNode })[]
-  }
+	Omit<FormItemRHFProps<F, N>, 'children'> & {
+		items: (Omit<ToggleGroupItemProps, 'children'> & { label?: ReactNode })[]
+	}
 
 export type { ToggleGroupRHFProps }

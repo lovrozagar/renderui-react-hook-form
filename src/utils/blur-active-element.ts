@@ -1,12 +1,15 @@
 function blurActiveElement() {
-  if (
-    document &&
-    document.activeElement &&
-    'blur' in document.activeElement &&
-    typeof document.activeElement.blur === 'function'
-  ) {
-    document.activeElement.blur()
-  }
+	if (typeof window === 'undefined') return
+
+	const activeElement = document.activeElement
+
+	if (!(activeElement instanceof HTMLElement)) return
+
+	activeElement.blur()
+
+	setTimeout(() => {
+		activeElement.focus()
+	}, 1000)
 }
 
 export { blurActiveElement }

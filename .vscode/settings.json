@@ -1,0 +1,42 @@
+{
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": true,
+	"files.encoding": "utf8",
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"search.exclude": {
+		"**/package-lock.json": true,
+		"**/pnpm-lock.yaml": true,
+		".cache/**": true,
+		".git/**": true,
+		"coverage/**": true,
+		"dist/**": true,
+		"generated/**": true,
+		"node_modules/**": true,
+		"public/**": true
+	},
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.suggest.autoImports": true,
+	"typescript.updateImportsOnFileMove.enabled": "always"
+}
