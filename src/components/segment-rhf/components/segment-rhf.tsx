@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { FormItemRHF } from '@/components/form-item-rhf/components/form-item-rhf'
 import { RING_FOCUS_VISIBLE_CLASSNAME } from '@/constants/constants'
 import { getFormItemProps } from '@/utils/split-form-item-props'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { FormItemRHF } from '@/components/form-item-rhf/components/form-item-rhf'
 import { getFormItemProps } from '@/utils/split-form-item-props'
 import { TextInput, chain } from '@renderui/core'

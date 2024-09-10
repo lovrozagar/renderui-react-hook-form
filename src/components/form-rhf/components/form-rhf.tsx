@@ -2,8 +2,8 @@
 
 import type { FormRHFProps } from '@/components/form-rhf/types/form-rhf'
 import { Form, noop } from '@renderui/core'
-import { useEffect, useState } from 'react'
 import type React from 'react'
+import { useEffect, useState } from 'react'
 import type { FieldValues } from 'react-hook-form'
 
 const FormRHF = <T extends FieldValues>(props: FormRHFProps<T>) => {
@@ -11,6 +11,7 @@ const FormRHF = <T extends FieldValues>(props: FormRHFProps<T>) => {
 		form,
 		onSubmit,
 		onInvalidSubmit,
+		noValidate = true,
 		hasSubmitRateLimit = true,
 		submitRateLimit = 500,
 		...restProps
@@ -51,7 +52,7 @@ const FormRHF = <T extends FieldValues>(props: FormRHFProps<T>) => {
 		return handleSubmit(onSubmit, onInvalidSubmit)(event)
 	}
 
-	return <Form onSubmit={handleRateLimitedSubmit} {...restProps} />
+	return <Form onSubmit={handleRateLimitedSubmit} noValidate={noValidate} {...restProps} />
 }
 
 export { FormRHF }
