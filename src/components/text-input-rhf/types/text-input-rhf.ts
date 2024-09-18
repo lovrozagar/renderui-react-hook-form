@@ -6,9 +6,12 @@ import type { FieldValues, Path } from 'react-hook-form'
 
 type TextInputRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
 	React.ComponentPropsWithRef<typeof TextInput>,
-	'form'
+	'form' | 'inputContainerProps'
 > &
 	Omit<FormItemRHFProps<F, N>, 'children'> & {
+		inputContainerProps?: React.ComponentPropsWithRef<typeof TextInput>['inputContainerProps'] & {
+			startContent?: ((value: string) => React.ReactNode) | React.ReactNode
+		} & { endContent?: ((value: string) => React.ReactNode) | React.ReactNode }
 		trim?: boolean | undefined
 	}
 

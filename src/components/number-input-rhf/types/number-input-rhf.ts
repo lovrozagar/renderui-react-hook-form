@@ -4,11 +4,14 @@ import type { FieldValues, Path } from 'react-hook-form'
 
 type NumberInputRHFProps<F extends FieldValues, N extends Path<F>> = Omit<
 	React.ComponentPropsWithRef<typeof NumberInput>,
-	'form'
+	'form' | 'inputContainerProps'
 > &
 	Omit<FormItemRHFProps<F, N>, 'children' | 'onValueChange'> & {
 		onValueChange?: ((value: number | null) => void) | undefined
 		precision?: number
+		inputContainerProps?: React.ComponentPropsWithRef<typeof NumberInput>['inputContainerProps'] & {
+			startContent?: ((value: number | null) => React.ReactNode) | React.ReactNode
+		} & { endContent?: ((value: number | null) => React.ReactNode) | React.ReactNode }
 	}
 
 export type { NumberInputRHFProps }

@@ -1,6 +1,6 @@
 import { FormItemRHF } from '@/components/form-item-rhf/components/form-item-rhf'
 import { getFormItemProps } from '@/utils/split-form-item-props'
-import { TextInput, chain } from '@renderui/core'
+import { TextInput, chain, functionCallOrValue, getOptionalObject } from '@renderui/core'
 import type { FieldValues, Path } from 'react-hook-form'
 import { getTextTrim } from '../../../utils/get-text-trim'
 import type { TextInputRHFProps } from '../types/text-input-rhf'
@@ -11,7 +11,10 @@ const TextInputRHF = <F extends FieldValues, N extends Path<F>>(props: TextInput
 	const { form, children, ...restFormItemProps } = formItemProps
 	const { setValue } = form
 
-	const { trim, onBlur, onValueChange, ...restProps } = componentProps
+	const { trim, onBlur, onValueChange, inputContainerProps, ...restProps } = componentProps
+
+	const { startContent, endContent, ...restInputContainerProps } =
+		getOptionalObject(inputContainerProps)
 
 	return (
 		<FormItemRHF form={form} {...restFormItemProps}>
@@ -29,6 +32,9 @@ const TextInputRHF = <F extends FieldValues, N extends Path<F>>(props: TextInput
 							onBlur,
 						)}
 						onValueChange={chain(field.onChange, onValueChange)}
+						startContent={functionCallOrValue(startContent, field.value)}
+						endContent={functionCallOrValue(endContent, field.value)}
+						inputContainerProps={restInputContainerProps}
 						{...restProps}
 					/>
 					{children}
