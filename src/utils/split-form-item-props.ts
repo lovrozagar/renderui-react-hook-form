@@ -60,6 +60,8 @@ function getFormItemProps<
 			children,
 			orientation,
 			order,
+			hasLabel,
+			hasMessage,
 		},
 		componentProps: {
 			...componentProps,

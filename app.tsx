@@ -16,18 +16,7 @@ const App = () => {
 					console.log(values)
 				}}
 			>
-				<TextInputRHF form={form} name='name' />
-				<ToggleGroupRHF
-					type='multiple'
-					form={form}
-					name='group'
-					rovingFocus={false}
-					items={[
-						{ value: '1', label: 'ef eaf ea fea' },
-						{ value: '2', label: 'aef eaf ea ' },
-					]}
-					labelProps={{ className: 'mb-0.5' }}
-				/>
+				<TextInputRHF form={form} name='name' hasMessage={false} />
 				<Button type='submit'>Submit</Button>
 			</FormRHF>
 		</div>
